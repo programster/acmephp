@@ -6,3 +6,5 @@ vendor/
 doc/.couscous
 .subsplit
 .phpunit.result.cache
+config.yml
+acmephp-certificates
