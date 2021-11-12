@@ -140,6 +140,6 @@ $ docker run \
 You can use the Dockerfile to build your own Docker image.
 
 ```bash
-$ docker build . acmephp
+$ docker build . --tag=acmephp
 ```
 
