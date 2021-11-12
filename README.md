@@ -85,6 +85,10 @@ defaults:
   solver: http
 
 certificates:
+  - domain: my.example.com
+    solver:
+      name: digitalocean
+      api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   - domain: example.com
     distinguished_name:
       organization_name: MyCompany Internal
@@ -123,7 +127,13 @@ You can also use the docker image to generate certificates.
 Certificates and keys are stored into the volume `/root/.acmephp`
 
 ```bash
-$ docker run --rm -ti -v /cache/.acmephp:/root/.acmephp -v $PWD/.config.yml:/etc/acmephp.yml:ro acmephp/acmephp:latest run /etc/acmephp.yml
+$ docker run \
+  --rm \
+  -it \
+  -v /cache/.acmephp:/root/.acmephp \
+  -v $PWD/.config.yml:/etc/acmephp.yml:ro \
+  acmephp/acmephp:latest \
+  run /etc/acmephp.yml
 ```
 
 ## Building The Docker Image
