@@ -8,3 +8,6 @@ doc/.couscous
 .phpunit.result.cache
 config.yml
 acmephp-certificates
+
+# Ignore PHPstorm IDE
+.idea
