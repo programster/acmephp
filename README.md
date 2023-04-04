@@ -81,6 +81,11 @@ defaults:
   solver: http
 
 certificates:
+  - domain: my.example.com
+    solver:
+      name: godaddy
+      api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      api_secret: xxxxxxxxxxxxxxxxxxxxxx
   - domain: example.com
     distinguished_name:
       organization_name: MyCompany Internal
@@ -113,12 +118,25 @@ usage
 $ acmephp run path-to-config.yml
 ```
 
+
 ## Using docker
+You can also use the Docker to generate certificates.
 
-You can also use the docker image to generate certificates.
-Certificates and keys are stored into the volume `/root/.acmephp`
+Build the Docker image with:
 
+```bash
+$ docker build . --tag=acmephp
 ```
-docker run --rm -ti -v /cache/.acmephp:/root/.acmephp -v $PWD/.config.yml:/etc/acmephp.yml:ro acmephp/acmephp:latest run /etc/acmephp.yml
+
+
+```bash
+$ docker run \
+  --rm \
+  -it \
+  -v $PWD/acmephp-certificates:/root/.acmephp \
+  -v $PWD/config.yml:/etc/acmephp.yml:ro \
+  acmephp:latest \
+  run /etc/acmephp.yml
 ```
 
+Certificates and keys will be generated and stored in the local `acmephp-certificates` subfolder.
