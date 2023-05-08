@@ -119,15 +119,18 @@ $ acmephp run path-to-config.yml
 ```
 
 
-## Using docker
+## Using Docker
 You can also use the Docker to generate certificates.
 
-Build the Docker image with:
+### Build The Docker Image
+You can build the Docker image with:
 
 ```bash
 $ docker build . --tag=acmephp
 ```
 
+### Run The Docker Image
+You can then run the image with:
 
 ```bash
 $ docker run \
