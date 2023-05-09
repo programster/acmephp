@@ -1,3 +1,7 @@
 tests/
 build/
 vendor/
+
+# Ignore any files the user may have locally for the configuration and generated certificates.
+config.yml
+acmephp-certificates/
