@@ -250,6 +250,12 @@ class GoDaddySolver implements MultipleChallengesSolverInterface, ConfigurableSe
             // failed repsonse, probably a bad auth token.
             throw new \Exception("Request failed, please check that your API auth token is valid.");
         }
+        else
+        {
+            # Sleep for a bit to give Godaddy DNS change time to propagate.
+            print "Sleeping for 30 seconds for DNS propagation..." . PHP_EOL;
+            sleep(30);
+        }
     }
 
 
