@@ -97,7 +97,7 @@ certificates:
       - action: install_aws_elb
         region: eu-west-1
         loadbalancer: my_elb
-  - domain: www.example.com
+  - domain: example.com
     solver:
       name: http-file
       adapter: ftp                                     # ftp or sftp or local, see https://flysystem.thephpleague.com/
@@ -110,6 +110,8 @@ certificates:
       # ssl: true
       # timeout: 30
       # privateKey: path/to/or/contents/of/privatekey
+    subject_alternative_names: # optionally specify other FQDNs the certificate should support
+      - www.example.com
 ```
 
 usage
