@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM debian:12
 
 # Set timezone
 ENV TZ=UTC
@@ -14,27 +14,27 @@ WORKDIR /srv
 
 # Composer dependencies
 RUN apt-get install -y \
-  php8.1-phar \
-  php8.1-iconv \
-  php8.1-mbstring \
-  php8.1-curl \
-  php8.1-ctype \
-  php8.1-opcache \
-  php8.1-sockets \
-  php8.1-simplexml \
-  php8.1-dom \
-  php8.1-tokenizer \
-  php8.1-apcu \
-  php8.1-posix \
-  php8.1-xmlwriter \
-  php8.1-xml \
-  php8.1-zip \
-  php8.1-ftp \
+  php8.2-phar \
+  php8.2-iconv \
+  php8.2-mbstring \
+  php8.2-curl \
+  php8.2-ctype \
+  php8.2-opcache \
+  php8.2-sockets \
+  php8.2-simplexml \
+  php8.2-dom \
+  php8.2-tokenizer \
+  php8.2-apcu \
+  php8.2-posix \
+  php8.2-xmlwriter \
+  php8.2-xml \
+  php8.2-zip \
+  php8.2-ftp \
   ca-certificates
 
-RUN echo "opcache.enable_cli=1" > /etc/php/8.1/cli/conf.d/opcache.ini \
-  && echo "opcache.file_cache='/tmp/opcache'" >> /etc/php/8.1/cli/conf.d/opcache.ini \
-  && echo "opcache.file_update_protection=0" >> /etc/php/8.1/cli/conf.d/opcache.ini \
+RUN echo "opcache.enable_cli=1" > /etc/php/8.2/cli/conf.d/opcache.ini \
+  && echo "opcache.file_cache='/tmp/opcache'" >> /etc/php/8.2/cli/conf.d/opcache.ini \
+  && echo "opcache.file_update_protection=0" >> /etc/php/8.2/cli/conf.d/opcache.ini \
   && mkdir /tmp/opcache
 
 COPY composer.json /srv/
@@ -48,10 +48,10 @@ COPY ./bin /srv/bin
 
 #RUN composer warmup-opcode -- /srv
 
-RUN echo "date.timezone = UTC" > /etc/php/8.1/cli/conf.d//symfony.ini \
- && echo "opcache.enable_cli=1" > /etc/php/8.1/cli/conf.d//opcache.ini \
- && echo "opcache.file_cache='/tmp/opcache'" >> /etc/php/8.1/cli/conf.d/opcache.ini \
- && echo "opcache.file_update_protection=0" >> /etc/php/8.1/cli/conf.d/opcache.ini
+RUN echo "date.timezone = UTC" > /etc/php/8.2/cli/conf.d//symfony.ini \
+ && echo "opcache.enable_cli=1" > /etc/php/8.2/cli/conf.d//opcache.ini \
+ && echo "opcache.file_cache='/tmp/opcache'" >> /etc/php/8.2/cli/conf.d/opcache.ini \
+ && echo "opcache.file_update_protection=0" >> /etc/php/8.2/cli/conf.d/opcache.ini
 
 ENTRYPOINT ["/srv/bin/acme"]
 CMD ["list"]
