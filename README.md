@@ -134,7 +134,7 @@ docker build . --tag=acmephp
 You can then run the image with:
 
 ```bash
-$ docker run \
+docker run \
   --rm \
   -it \
   -v $PWD/acmephp-certificates:/root/.acmephp \
