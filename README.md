@@ -83,9 +83,8 @@ defaults:
 certificates:
   - domain: my.example.com
     solver:
-      name: godaddy
-      api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-      api_secret: xxxxxxxxxxxxxxxxxxxxxx
+      name: digitalocean
+      api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
   - domain: example.com
     distinguished_name:
       organization_name: MyCompany Internal
@@ -122,13 +121,13 @@ $ acmephp run path-to-config.yml
 
 
 ## Using Docker
-You can also use the Docker to generate certificates.
+You can also use the Docker image to generate certificates.
 
 ### Build The Docker Image
 You can build the Docker image with:
 
 ```bash
-$ docker build . --tag=acmephp
+docker build . --tag=acmephp
 ```
 
 ### Run The Docker Image
@@ -145,3 +144,4 @@ $ docker run \
 ```
 
 Certificates and keys will be generated and stored in the local `acmephp-certificates` subfolder.
+
